@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07090e" />
+  <meta name="description" content="Web Mandap crafts brand-led digital experiences, from custom websites to hosting, indexing, and ongoing care." />
+  <link rel="icon" type="image/x-icon" href="logotrue.png">
+  <title>Web Mandap — Crafting Digital Experiences That Tell Your Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/webmandap-logo.png" type="image/png" />
+  <style>
+    :root {
+      --ink: #07090e;
+      --ink-2: #0d121a;
+      --ink-3: #131a24;
+      --paper: #f2f4f6;
+      --muted: #aab3be;
+      --muted-2: #758191;
+      --silver: #c7d0dc;
+      --gold: #d2ab67;
+      --gold-hi: #f2d69f;
+      --gold-deep: #9f7840;
+      --line: rgba(220, 229, 239, .14);
+      --line-strong: rgba(220, 229, 239, .24);
+      --glow: rgba(210, 171, 103, .18);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Manrope", Arial, sans-serif;
+      --mono: "DM Mono", Consolas, monospace;
+      --max: 1240px;
+      --ease: cubic-bezier(.22,.61,.36,1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--ink); }
+    body { margin: 0; min-width: 320px; overflow-x: hidden; color: var(--paper); background: var(--ink); font-family: var(--sans); }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    ::selection { color: var(--ink); background: var(--gold-hi); }
+
+    .container { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; }
+    .section { position: relative; padding: 132px 0; border-top: 1px solid var(--line); }
+    .section::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .36; background-image: linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: calc((100vw - 48px)/12) 100%; mask-image: linear-gradient(90deg, transparent, black 14%, black 86%, transparent); }
+    .section > .container { position: relative; z-index: 1; }
+    .eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 17px; color: var(--gold-hi); font: 500 10px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 30px; height: 1px; background: linear-gradient(90deg, var(--gold), var(--silver)); }
+    .display { margin: 0; font: 600 clamp(52px, 5.8vw, 88px)/.91 var(--serif); letter-spacing: -.062em; }
+    .display em { color: var(--gold-hi); font-style: italic; }
+    .lead { max-width: 590px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.78; }
+    .mono { font-family: var(--mono); }
+
+    /* Navigation */
+    .nav { position: fixed; z-index: 70; inset: 0 0 auto; border-bottom: 1px solid transparent; background: linear-gradient(to bottom, rgba(7,9,14,.93), rgba(7,9,14,0)); transition: background .3s var(--ease), border-color .3s var(--ease); }
+    .nav.is-scrolled { background: rgba(7,9,14,.86); backdrop-filter: blur(18px) saturate(120%); border-color: var(--line); }
+    .nav-inner { min-height: 88px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; justify-self: start; white-space: nowrap; }
+    .brand-logo { width: 54px; height: 54px; display: block; flex: 0 0 auto; object-fit: contain; filter: drop-shadow(0 0 10px rgba(125, 209, 255, .20)) drop-shadow(0 0 13px rgba(210, 171, 103, .16)); }
+    .brand-name { display: flex; align-items: baseline; gap: 5px; color: var(--paper); font: 700 13px/1 var(--sans); letter-spacing: .11em; text-transform: uppercase; }
+    .brand-name strong { color: var(--gold-hi); font-weight: 700; }
+    .nav-links { display: flex; align-items: center; justify-content: center; gap: 27px; }
+    .nav-links a { position: relative; color: rgba(242,244,246,.72); font: 500 10px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; transition: color .24s ease; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 1px; background: linear-gradient(90deg, var(--gold), var(--silver)); transform: scaleX(0); transform-origin: right; transition: transform .32s var(--ease); }
+    .nav-links a:hover { color: var(--paper); }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-cta, .button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; padding: 0 17px; border: 1px solid rgba(210,171,103,.6); color: var(--paper); background: rgba(12,16,23,.62); font: 500 10px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; transition: transform .25s var(--ease), box-shadow .25s ease, border-color .25s ease, background .25s ease, color .25s ease; }
+    .nav-cta { justify-self: end; }
+    .nav-cta:hover, .button.ghost:hover { transform: translateY(-3px); border-color: var(--gold-hi); box-shadow: 0 12px 28px rgba(0,0,0,.22), 0 0 22px var(--glow); }
+    .button.gold { color: #100e0a; border-color: var(--gold-hi); background: linear-gradient(105deg, #c49850, #f1d49a); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 10px 28px rgba(210,171,103,.14); }
+    .button.gold:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(210,171,103,.24), 0 0 25px rgba(210,171,103,.18); }
+    .button.ghost { color: var(--silver); }
+    .button .arrow { font-size: 15px; line-height: 0; }
+    .menu-toggle { display: none; justify-self: end; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line-strong); background: rgba(15,20,28,.6); color: var(--paper); }
+    .menu-toggle span { display: block; width: 18px; height: 1px; margin: 5px auto; background: currentColor; transition: transform .25s var(--ease), opacity .25s ease; }
+    .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(6px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-nav { position: fixed; z-index: 60; inset: 0; display: grid; place-items: center; visibility: hidden; opacity: 0; background: rgba(7,9,14,.98); transition: visibility .28s ease, opacity .28s ease; }
+    .mobile-nav.open { visibility: visible; opacity: 1; }
+    .mobile-nav a { display: block; margin: 14px 0; text-align: center; color: var(--paper); font: 600 clamp(42px, 12vw, 70px)/.94 var(--serif); letter-spacing: -.065em; }
+    .mobile-nav .mini { margin-top: 25px; color: var(--gold-hi); font: 500 10px/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+
+    /* Hero */
+    .hero { position: relative; min-height: 910px; display: flex; align-items: center; padding: 142px 0 72px; isolation: isolate; overflow: hidden; background: #05070b; }
+    .hero-media, .hero-video, .hero-scrim { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; }
+    .hero-video { object-fit: cover; opacity: .7; filter: saturate(.76) contrast(1.04); }
+    .hero-scrim { z-index: -2; background: linear-gradient(90deg, rgba(5,7,11,.93) 0%, rgba(5,7,11,.76) 37%, rgba(5,7,11,.26) 72%, rgba(5,7,11,.78) 100%), linear-gradient(to bottom, rgba(5,7,11,.15) 62%, var(--ink) 100%); }
+    .hero-grid { position: absolute; z-index: -1; inset: 0; opacity: .3; background-image: linear-gradient(rgba(218,229,242,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(218,229,242,.15) 1px, transparent 1px); background-size: 90px 90px; mask-image: linear-gradient(to bottom, black, rgba(0,0,0,.48) 62%, transparent); }
+    .hero-orbit { position: absolute; z-index: -1; right: -7vw; bottom: -19vw; width: min(58vw, 800px); aspect-ratio: 1; border: 1px solid rgba(210,171,103,.34); border-radius: 50%; box-shadow: inset 0 0 70px rgba(210,171,103,.09), 0 0 60px rgba(210,171,103,.09); }
+    .hero-orbit::before, .hero-orbit::after { content: ""; position: absolute; inset: 13%; border: 1px solid rgba(199,208,220,.26); border-radius: inherit; }
+    .hero-orbit::after { inset: 28%; border-color: rgba(210,171,103,.44); }
+    .hero-wrap { display: grid; grid-template-columns: minmax(0,1fr) 320px; align-items: end; gap: 70px; }
+    .hero-copy { max-width: 800px; }
+    .hero .display { max-width: 790px; font-size: clamp(68px, 8.2vw, 126px); }
+    .hero-description { max-width: 600px; margin: 28px 0 0; color: rgba(242,244,246,.78); font-size: 17px; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 33px; }
+    .hero-status { display: flex; flex-wrap: wrap; gap: 15px 27px; margin-top: 36px; color: var(--silver); font: 500 10px/1.3 var(--mono); letter-spacing: .085em; text-transform: uppercase; }
+    .hero-status span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-status span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+    .hero-status span:nth-child(2)::before { background: var(--silver); box-shadow: 0 0 12px var(--silver); }
+    .hero-side { position: relative; min-height: 258px; padding: 24px; border: 1px solid rgba(242,244,246,.22); background: linear-gradient(145deg, rgba(12,17,26,.74), rgba(12,17,26,.35)); backdrop-filter: blur(8px); }
+    .hero-side::before { content: ""; position: absolute; top: 0; left: 0; width: 58px; height: 58px; border-right: 1px solid var(--gold-hi); border-bottom: 1px solid var(--gold-hi); }
+    .hero-side .overline { margin: 0 0 52px; color: var(--gold-hi); font: 500 9px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
+    .hero-side strong { display: block; max-width: 245px; font: 600 34px/1.02 var(--serif); letter-spacing: -.05em; }
+    .hero-side p { margin: 15px 0 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .hero-scroll { position: absolute; z-index: 2; right: 25px; bottom: 31px; display: flex; align-items: center; gap: 11px; color: rgba(242,244,246,.56); font: 500 9px/1 var(--mono); letter-spacing: .15em; text-transform: uppercase; writing-mode: vertical-rl; }
+    .hero-scroll::after { content: ""; width: 1px; height: 52px; background: linear-gradient(var(--gold), transparent); }
+
+    /* Studio */
+    .studio-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: end; gap: clamp(48px,10vw,150px); }
+    .studio-title { max-width: 600px; }
+    .studio-copy .lead { max-width: 610px; }
+    .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 46px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .principle span { display: block; margin-bottom: 8px; color: var(--gold-hi); font: 500 10px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .principle p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .manifesto{
+    position:relative;
+    overflow:hidden;
+    border-top:1px solid rgba(210,171,103,.18);
+    border-bottom:1px solid rgba(210,171,103,.18);
+    background:transparent;
+}
+
+.marquee{
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.marquee-track{
+    display:inline-flex;
+    align-items:center;
+    gap:48px;
+    min-width:max-content;
+    padding:22px 0;
+    animation:webMandapMarquee 38s linear infinite;
+}
+
+.marquee-track span{
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:rgba(242,244,246,.72);
+    transition:.3s;
+}
+
+.marquee-track span:hover{
+    color:var(--gold-hi);
+}
+
+.marquee-track i{
+    width:4px;
+    height:4px;
+    flex:0 0 auto;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:none;
+}
+
+@keyframes webMandapMarquee{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+    /* Values */
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 42px; margin-bottom: 62px; }
+    .section-heading .display { max-width: 760px; }
+    .section-heading .lead { max-width: 395px; }
+    .value-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .value-card { position: relative; min-height: 305px; padding: 26px 24px; overflow: hidden; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(145deg, rgba(19,26,36,.66), rgba(7,9,14,.2)); transition: transform .35s var(--ease), background .35s ease, border-color .35s ease, box-shadow .35s ease; }
+    .value-card::after { content: ""; position: absolute; right: -60px; bottom: -60px; width: 144px; height: 144px; border: 1px solid rgba(210,171,103,.18); border-radius: 50%; transition: transform .45s var(--ease), border-color .45s ease; }
+    .value-card:hover { z-index: 1; transform: translateY(-8px); border-color: rgba(210,171,103,.62); background: linear-gradient(145deg, rgba(31,38,48,.9), rgba(12,16,23,.9)); box-shadow: 0 24px 48px rgba(0,0,0,.26), 0 0 25px rgba(210,171,103,.08); }
+    .value-card:hover::after { transform: scale(1.32); border-color: rgba(199,208,220,.42); }
+    .value-no { color: var(--silver); font: 500 10px/1 var(--mono); letter-spacing: .15em; }
+    .value-symbol { display: grid; place-items: center; width: 39px; height: 39px; margin: 43px 0 20px; border: 1px solid rgba(210,171,103,.44); border-radius: 50%; color: var(--gold-hi); font: 600 18px/1 var(--serif); }
+    .value-card h3 { position: relative; z-index: 1; margin: 0 0 12px; font: 600 27px/1.04 var(--serif); letter-spacing: -.045em; }
+    .value-card p { position: relative; z-index: 1; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    /* Services */
+    .services { background: linear-gradient(180deg, #0d121a, #07090e); }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .service-card { position: relative; min-height: 245px; display: flex; flex-direction: column; justify-content: space-between; padding: 25px; overflow: hidden; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(22,29,39,.8), rgba(8,11,16,.92)); transition: transform .34s var(--ease), border-color .34s ease, box-shadow .34s ease; }
+    .service-card::before { content: ""; position: absolute; top: -36px; right: -36px; width: 110px; height: 110px; border: 1px solid rgba(199,208,220,.17); border-radius: 50%; transition: transform .45s var(--ease), border-color .45s ease; }
+    .service-card:hover { transform: translateY(-7px); border-color: rgba(210,171,103,.6); box-shadow: 0 20px 42px rgba(0,0,0,.27), 0 0 25px rgba(210,171,103,.08); }
+    .service-card:hover::before { transform: scale(1.4); border-color: rgba(210,171,103,.45); }
+    .service-top { display: flex; align-items: center; justify-content: space-between; }
+    .service-no { color: var(--silver); font: 500 10px/1 var(--mono); letter-spacing: .15em; }
+    .service-mark { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid rgba(210,171,103,.46); border-radius: 50%; color: var(--gold-hi); font: 600 17px/1 var(--serif); }
+    .service-card h3 { position: relative; z-index: 1; margin: 30px 0 9px; font: 600 31px/1 var(--serif); letter-spacing: -.052em; }
+    .service-card p { position: relative; z-index: 1; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.68; }
+    .services-footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 29px; padding-top: 19px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .services-footer span { display: inline-flex; align-items: center; gap: 9px; color: var(--gold-hi); font: 500 10px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .services-footer span::before { content: "✦"; color: var(--silver); }
+
+    /* Work */
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .case-card { position: relative; min-height: 585px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); background: #10151d; transition: transform .38s var(--ease), border-color .38s ease, box-shadow .38s ease; }
+    .case-card:hover { z-index: 1; transform: translateY(-9px); border-color: rgba(210,171,103,.65); box-shadow: 0 30px 56px rgba(0,0,0,.3), 0 0 34px rgba(210,171,103,.08); }
+    .case-visual { position: relative; min-height: 289px; overflow: hidden; border-bottom: 1px solid var(--line); }
+    .case-card:hover .screen { transform: scale(1.045); }
+    .screen { position: absolute; inset: 0; transition: transform .65s var(--ease); }
+    .browser { position: absolute; inset: 0 0 auto; height: 37px; display: flex; align-items: center; justify-content: space-between; padding: 0 13px; border-bottom: 1px solid rgba(255,255,255,.13); color: rgba(255,255,255,.67); font: 500 8px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .dots { display: flex; gap: 4px; }
+    .dots i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .browser-links { display: flex; gap: 10px; }
+    .fitness-screen { background: radial-gradient(circle at 74% 28%, rgba(239,99,23,.6), transparent 25%), linear-gradient(135deg, #0a0d10, #352014 58%, #130d0a); }
+    .fitness-copy { position: absolute; left: 20px; right: 20px; top: 68px; color: #fff3e5; font: 700 46px/.85 var(--serif); letter-spacing: -.07em; }
+    .fitness-copy em { color: #f67b1b; font-style: italic; }
+    .fitness-sub { position: absolute; left: 20px; top: 171px; color: rgba(255,239,223,.77); font-size: 10px; max-width: 190px; line-height: 1.55; }
+    .fitness-bar { position: absolute; left: 20px; bottom: 22px; width: 170px; height: 36px; display: grid; place-items: center; background: #f26912; color: #130e0a; font: 500 8px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .fitness-bars { position: absolute; right: -9px; bottom: -18px; width: 168px; height: 168px; opacity: .72; background: repeating-linear-gradient(90deg, rgba(244,115,28,.72) 0 10px, transparent 10px 22px); transform: skewY(-12deg); }
+    .cargo-screen { background: radial-gradient(circle at 74% 24%, rgba(86,156,222,.42), transparent 28%), linear-gradient(137deg, #07101c, #11283e 56%, #09111c); }
+    .cargo-route { position: absolute; right: -21px; bottom: -31px; width: 285px; height: 224px; border: 1px solid rgba(137,206,255,.43); border-radius: 50%; transform: rotate(-30deg); box-shadow: inset 0 0 30px rgba(99,183,255,.08); }
+    .cargo-route::before, .cargo-route::after { content: ""; position: absolute; border: 1px solid rgba(137,206,255,.38); border-radius: inherit; }
+    .cargo-route::before { inset: 16%; }.cargo-route::after { inset: 34%; }
+    .cargo-copy { position: absolute; left: 20px; top: 74px; max-width: 245px; color: #e9f4ff; font: 600 37px/.92 var(--serif); letter-spacing: -.06em; }
+    .cargo-copy em { color: #82d1ff; font-style: italic; }
+    .cargo-kicker { position: absolute; left: 20px; top: 191px; color: #b9dff6; font: 500 9px/1.45 var(--mono); letter-spacing: .11em; text-transform: uppercase; }
+    .cargo-line { position: absolute; left: 20px; right: 20px; bottom: 30px; height: 1px; background: linear-gradient(90deg, #77cfff, transparent); }
+    .blnd-screen { background: radial-gradient(circle at 72% 22%, rgba(235,194,134,.33), transparent 28%), linear-gradient(135deg, #160a04, #4a1f0b 55%, #1c0e07); }
+    .blnd-orb { position: absolute; right: 15px; top: 60px; width: 180px; height: 180px; border: 1px solid rgba(248,205,128,.56); border-radius: 50%; box-shadow: inset 0 0 35px rgba(248,205,128,.12), 0 0 35px rgba(248,205,128,.08); }
+    .blnd-orb::before { content: ""; position: absolute; left: 48%; top: -30px; width: 19px; height: 230px; border-radius: 99px; background: linear-gradient(#e7bf78, #80502a 48%, #f6d99d); transform: rotate(27deg); box-shadow: 0 0 22px rgba(249,213,152,.18); }
+    .blnd-copy { position: absolute; left: 20px; top: 79px; color: #ffe8c7; font: 600 56px/.82 var(--serif); letter-spacing: -.08em; }
+    .blnd-sub { position: absolute; left: 20px; top: 150px; color: rgba(255,226,185,.74); font: 500 9px/1.6 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .blnd-chip { position: absolute; left: 20px; bottom: 26px; padding: 8px 10px; border: 1px solid rgba(249,213,152,.5); color: #f7d796; font: 500 8px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .case-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 19px 22px 0; color: var(--silver); font: 500 9px/1 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+    .live-pill { padding: 6px 8px; border: 1px solid rgba(210,171,103,.55); border-radius: 99px; color: var(--gold-hi); background: rgba(7,9,14,.34); }
+    .case-content { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 22px; }
+    .case-content h3 { margin: 0 0 9px; font: 600 43px/.91 var(--serif); letter-spacing: -.06em; }
+    .case-content p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.68; }
+    .case-link { display: inline-flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 23px; padding-bottom: 6px; border-bottom: 1px solid rgba(210,171,103,.58); color: var(--paper); font: 500 10px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; transition: gap .25s ease, color .25s ease; }
+    .case-link:hover { gap: 16px; color: var(--gold-hi); }
+    .case-link.disabled { cursor: default; color: var(--silver); border-color: rgba(199,208,220,.32); }
+
+    /* Process */
+    /* Process */
+.process-showcase {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 84% 18%, rgba(210,171,103,.13), transparent 28%),
+    linear-gradient(180deg, #0b1017 0%, #07090e 100%);
+}
+
+.process-intro {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(440px, 1.12fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 110px);
+  margin-bottom: 88px;
+}
+
+.process-intro-copy .display {
+  max-width: 600px;
+}
+
+.process-intro-copy .lead {
+  max-width: 570px;
+  margin-top: 28px;
+}
+
+.process-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.process-legend span {
+  padding: 9px 11px;
+  border: 1px solid rgba(210,171,103,.28);
+  color: var(--silver);
+  background: rgba(255,255,255,.025);
+  font: 500 9px/1 var(--mono);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.process-film {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid rgba(210,171,103,.4);
+  background:
+    radial-gradient(circle at 72% 30%, rgba(210,171,103,.28), transparent 24%),
+    linear-gradient(135deg, #17212e, #0b1017 55%, #06080c);
+  box-shadow: 0 28px 70px rgba(0,0,0,.3);
+}
+
+.process-film::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(242,244,246,.12);
+  pointer-events: none;
+}
+
+.process-film::after {
+  content: "";
+  position: absolute;
+  width: 310px;
+  height: 310px;
+  right: -105px;
+  bottom: -125px;
+  border: 1px solid rgba(210,171,103,.36);
+  border-radius: 50%;
+  box-shadow: inset 0 0 60px rgba(210,171,103,.08);
+}
+
+.process-film-grid {
+  position: absolute;
+  inset: 0;
+  opacity: .34;
+  background-image:
+    linear-gradient(rgba(242,244,246,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,244,246,.08) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.process-film-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 31px;
+}
+
+.process-film-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--silver);
+  font: 500 9px/1 var(--mono);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.process-film-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold-hi);
+}
+
+.process-film-live::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-hi);
+  box-shadow: 0 0 12px var(--gold-hi);
+}
+
+.process-film-center {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.process-play {
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(242,244,246,.46);
+  border-radius: 50%;
+  color: var(--gold-hi);
+  background: rgba(7,9,14,.42);
+  font-size: 21px;
+  box-shadow: 0 0 35px rgba(210,171,103,.14);
+}
+
+.process-film-center strong {
+  display: block;
+  color: var(--paper);
+  font: 600 42px/.92 var(--serif);
+  letter-spacing: -.055em;
+}
+
+.process-film-center p {
+  max-width: 280px;
+  margin: 13px auto 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.process-film-bottom {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 17px;
+  border-top: 1px solid rgba(242,244,246,.14);
+}
+
+.process-film-bottom span {
+  color: var(--silver);
+  font: 500 9px/1.45 var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.process-film-bottom strong {
+  color: var(--gold-hi);
+  font: 500 10px/1 var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.process-journey {
+  border-top: 1px solid var(--line);
+}
+
+.journey-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1.1fr) minmax(230px, .62fr);
+  gap: clamp(28px, 4vw, 70px);
+  padding: 48px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding .35s var(--ease), background .35s ease, border-color .35s ease;
+}
+
+.journey-step::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-hi), transparent);
+  transition: width .5s var(--ease);
+}
+
+.journey-step:hover {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-color: rgba(210,171,103,.48);
+  background: rgba(255,255,255,.018);
+}
+
+.journey-step:hover::before {
+  width: 100%;
+}
+
+.journey-index {
+  color: var(--gold-hi);
+  font: 500 11px/1.4 var(--mono);
+  letter-spacing: .16em;
+}
+
+.journey-index span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted-2);
+  font-size: 8px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.journey-main .step-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--gold-hi);
+  font: 500 9px/1 var(--mono);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.journey-main h3 {
+  margin: 0 0 15px;
+  color: var(--paper);
+  font: 600 clamp(34px, 3vw, 48px)/.94 var(--serif);
+  letter-spacing: -.055em;
+}
+
+.journey-main p {
+  max-width: 610px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.journey-includes {
+  align-self: end;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.journey-includes li {
+  position: relative;
+  padding: 9px 0 9px 16px;
+  border-bottom: 1px solid rgba(242,244,246,.1);
+  color: var(--silver);
+  font: 500 9px/1.4 var(--mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.journey-includes li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--gold-hi);
+  font-size: 9px;
+}
+
+.process-closing {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 42px;
+  margin-top: 42px;
+  padding: 30px;
+  border: 1px solid rgba(210,171,103,.28);
+  background:
+    linear-gradient(90deg, rgba(210,171,103,.1), rgba(255,255,255,.02) 52%, rgba(210,171,103,.07));
+}
+
+.process-closing strong {
+  display: block;
+  max-width: 590px;
+  font: 600 clamp(30px, 3vw, 44px)/.98 var(--serif);
+  letter-spacing: -.05em;
+}
+
+.process-closing p {
+  max-width: 390px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.72;
+}
+
+@media (max-width: 1040px) {
+  .process-intro {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .journey-step {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .journey-includes {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 22px;
+    max-width: 620px;
+  }
+}
+
+@media (max-width: 760px) {
+  .process-intro {
+    margin-bottom: 54px;
+  }
+
+  .process-film {
+    min-height: 350px;
+  }
+
+  .process-film-content {
+    padding: 23px;
+  }
+
+  .process-film-center strong {
+    font-size: 35px;
+  }
+
+  .journey-step {
+    grid-template-columns: 1fr;
+    gap: 19px;
+    padding: 30px 0;
+  }
+
+  .journey-step:hover {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .journey-index {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .journey-index span {
+    margin: 0;
+  }
+
+  .journey-main h3 {
+    font-size: 36px;
+  }
+
+  .journey-includes {
+    grid-column: auto;
+    display: block;
+  }
+
+  .process-closing {
+    display: grid;
+    gap: 17px;
+    padding: 24px 20px;
+  }
+}
+    .process-number { color: var(--gold-hi); font: 500 10px/1 var(--mono); letter-spacing: .14em; }
+    .process-row h3 { margin: 0; font: 600 30px/1 var(--serif); letter-spacing: -.045em; }
+    .process-row p { max-width: 335px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .process-row .step-mark { color: var(--silver); font: 500 19px/1 var(--serif); }
+
+    /* Testimonials */
+    .testimonials { background: #0d121a; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .review-card { position: relative; min-height: 260px; display: flex; flex-direction: column; padding: 25px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(22,29,39,.9), rgba(11,15,22,.9)); }
+    .review-card .quote { color: var(--gold-hi); font: 600 50px/.8 var(--serif); }
+    .review-card p { margin: 15px 0 24px; color: #d4dae2; font: 500 19px/1.43 var(--serif); letter-spacing: -.025em; }
+    .review-card footer { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); color: var(--silver); font: 500 10px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .review-card small { display: block; margin-top: 5px; color: var(--muted-2); font-size: 9px; }
+    .review-placeholder { opacity: .78; }
+
+    /* Contact */
+    .contact { overflow: hidden; padding-bottom: 0; background: radial-gradient(ellipse 68% 82% at 78% 40%, rgba(210,171,103,.12), transparent 61%), #07090e; }
+    .contact::after { content: ""; position: absolute; right: -13vw; bottom: -18vw; width: min(52vw,720px); aspect-ratio: 1; border: 1px solid rgba(199,208,220,.2); border-radius: 50%; box-shadow: inset 0 0 65px rgba(199,208,220,.06); }
+    .contact-grid { display: grid; grid-template-columns: .83fr 1.17fr; gap: clamp(45px, 8vw, 124px); padding-bottom: 128px; }
+    .contact .display { max-width: 550px; font-size: clamp(60px, 6.6vw, 100px); }
+    .contact-intro { margin-top: 27px; }
+    .contact-intro .lead { max-width: 470px; }
+    .contact-details { display: grid; gap: 28px; margin-top: 51px; }
+    .contact-detail dt { margin-bottom: 8px; color: var(--gold-hi); font: 500 10px/1 var(--mono); letter-spacing: .15em; text-transform: uppercase; }
+    .contact-detail dd { margin: 0; color: var(--paper); font: 500 17px/1.55 var(--serif); letter-spacing: -.018em; }
+    .contact-detail dd a:hover { color: var(--gold-hi); }
+    .contact-form { position: relative; z-index: 1; padding: 32px; border: 1px solid rgba(242,244,246,.18); background: linear-gradient(145deg, rgba(20,26,35,.95), rgba(10,14,20,.84)); box-shadow: 0 24px 55px rgba(0,0,0,.25); }
+    .form-top { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 28px; padding-bottom: 21px; border-bottom: 1px solid var(--line); }
+    .form-top h3 { margin: 0; font: 600 39px/.94 var(--serif); letter-spacing: -.055em; }
+    .form-top p { max-width: 190px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; text-align: right; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .field { display: grid; gap: 9px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: var(--silver); font: 500 10px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+    .field input, .field select, .field textarea { width: 100%; border: 1px solid rgba(242,244,246,.13); border-radius: 0; outline: 0; color: var(--paper); background: rgba(4,6,10,.55); padding: 15px 16px; font: 400 14px/1.35 var(--sans); transition: border-color .22s ease, box-shadow .22s ease, background .22s ease; }
+    .field input::placeholder, .field textarea::placeholder { color: #788494; opacity: 1; }
+    .field select { color-scheme: dark; cursor: pointer; }
+    .field textarea { min-height: 145px; resize: vertical; }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: rgba(210,171,103,.86); background: rgba(10,13,19,.84); box-shadow: 0 0 0 3px rgba(210,171,103,.09); }
+    .form-bottom { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 22px; }
+    .form-note { max-width: 240px; margin: 0; color: var(--muted-2); font-size: 10px; line-height: 1.6; }
+    .send-button { position: relative; min-width: 218px; min-height: 57px; padding: 0 21px; border: 0; color: #110e09; background: linear-gradient(100deg, #bd8f48, #f4d79a); font: 700 10px/1 var(--mono); letter-spacing: .13em; text-transform: uppercase; box-shadow: inset 0 1px 0 rgba(255,255,255,.38), 0 13px 25px rgba(210,171,103,.15); transition: transform .25s var(--ease), box-shadow .25s ease; }
+    .send-button::after { content: "↗"; margin-left: 15px; font-size: 16px; vertical-align: -1px; }
+    .send-button:hover { transform: translateY(-3px); box-shadow: 0 16px 33px rgba(210,171,103,.25); }
+    .form-success { min-height: 18px; margin: 16px 0 0; color: var(--gold-hi); font: 500 10px/1.5 var(--mono); letter-spacing: .06em; }
+    .contact-footer-bar { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 24px 0; border-top: 1px solid var(--line); color: var(--muted-2); font: 500 9px/1.4 var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+    .contact-footer-bar a { color: var(--silver); transition: color .2s ease; }.contact-footer-bar a:hover { color: var(--gold-hi); }
+
+    /* Reveal animations */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .68s var(--ease), transform .68s var(--ease); }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .08s; }.delay-2 { transition-delay: .15s; }.delay-3 { transition-delay: .22s; }
+
+@media (max-width: 1040px) {
+  .nav-links { gap: 18px; }
+  .hero-wrap { grid-template-columns: 1fr 270px; gap: 32px; }
+  .value-grid { grid-template-columns: 1fr 1fr; }
+  .service-grid { grid-template-columns: 1fr 1fr; }
+  .work-grid { grid-template-columns: 1fr; max-width: 620px; }
+  .case-card { min-height: 530px; }
+  .testimonial-grid { grid-template-columns: 1fr; max-width: 620px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 62px; }
+}
+
+@media (max-width: 760px) {
+  body {
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .section {
+    padding: 96px 0;
+  }
+
+  .nav-inner {
+    min-height: 74px;
+    grid-template-columns: 1fr auto;
+  }
+
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-name {
+    font-size: 10px;
+    letter-spacing: .08em;
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding: 110px 0 44px;
+    align-items: end;
+  }
+
+  .hero-video {
+    opacity: 20;
+  }
+
+  .hero-scrim {
+    background:
+      linear-gradient(90deg, rgba(5,7,11,.92), rgba(5,7,11,.68)),
+      linear-gradient(to bottom, rgba(5,7,11,.1) 54%, var(--ink) 98%);
+  }
+
+  .hero-wrap {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hero .display {
+    font-size: clamp(44px, 14vw, 64px);
+    line-height: .92;
+    letter-spacing: -.055em;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    margin-top: 22px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-status {
+    font-size: 9px;
+    gap: 12px;
+  }
+
+  .hero-side {
+    max-width: 100%;
+    min-height: 205px;
+    padding: 20px;
+  }
+
+  .hero-side .overline {
+    margin-bottom: 35px;
+  }
+
+  .hero-side strong {
+    font-size: 30px;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  .studio-grid,
+  .process-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .section-heading {
+    display: grid;
+    gap: 22px;
+    margin-bottom: 43px;
+  }
+
+  .section-heading .lead {
+    max-width: 530px;
+  }
+
+  .principles {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .marquee-track {
+  gap: 18px;
+  padding: 24px 0;
+  animation-duration: 18s;
+}
+
+.marquee-track span {
+  font-size: 12px;
+  letter-spacing: .1em;
+}
+
+  .value-grid,
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value-card {
+    min-height: 235px;
+  }
+
+  .value-symbol {
+    margin: 30px 0 17px;
+  }
+
+  .service-card {
+    min-height: 220px;
+  }
+
+  .services-footer {
+    display: grid;
+    gap: 9px;
+  }
+
+  .case-visual {
+    min-height: 260px;
+  }
+
+  .case-content h3 {
+    font-size: 40px;
+  }
+
+  .process-row {
+    grid-template-columns: 48px 1fr;
+    gap: 15px;
+    padding: 21px 0;
+  }
+
+  .process-row p {
+    grid-column: 2;
+    max-width: 480px;
+  }
+
+  .process-row .step-mark {
+    display: none;
+  }
+
+  .process-row h3 {
+    font-size: 28px;
+  }
+
+  .review-card {
+    min-height: 228px;
+  }
+
+  .review-card p {
+    font-size: 18px;
+  }
+
+  .contact-grid {
+    padding-bottom: 92px;
+  }
+
+  .contact-form {
+    padding: 24px 18px;
+    margin-inline: -2px;
+  }
+
+  .form-top {
+    display: grid;
+    gap: 13px;
+  }
+
+  .form-top h3 {
+    font-size: 35px;
+  }
+
+  .form-top p {
+    max-width: 340px;
+    text-align: left;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .form-bottom {
+    display: grid;
+  }
+
+  .form-note {
+    max-width: 100%;
+  }
+
+  .send-button {
+    width: 100%;
+  }
+
+  .contact-footer-bar {
+    display: grid;
+    gap: 9px;
+    padding: 21px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+.industry-list{
+    margin-top:70px;
+    border-top:1px solid var(--line);
+}
+
+.industry-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:38px 8px;
+
+    border-bottom:1px solid var(--line);
+
+    transition:.35s var(--ease);
+
+    text-decoration:none;
+}
+
+.industry-item:hover{
+
+    padding-left:22px;
+
+    border-color:rgba(210,171,103,.55);
+
+    background:rgba(255,255,255,.02);
+
+}
+
+.industry-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:36px;
+
+}
+
+.industry-number{
+
+    width:54px;
+
+    color:var(--gold-hi);
+
+    font-family:var(--mono);
+
+    font-size:11px;
+
+    letter-spacing:.16em;
+
+}
+
+.industry-item h3{
+
+    margin:0;
+
+    font-family:var(--serif);
+
+    font-size:clamp(36px,3vw,52px);
+
+    font-weight:600;
+
+    letter-spacing:-.05em;
+
+    transition:.3s;
+
+}
+
+.industry-item:hover h3{
+
+    color:var(--gold-hi);
+
+}
+
+.industry-item p{
+
+    margin-top:8px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+}
+
+.industry-arrow{
+
+    font-size:34px;
+
+    color:var(--gold-hi);
+
+    transition:.35s;
+
+}
+
+.industry-item:hover .industry-arrow{
+
+    transform:translateX(10px);
+
+}
+
+@media(max-width:760px){
+
+.industry-item{
+
+padding:26px 0;
+
+align-items:flex-start;
+
+}
+
+.industry-left{
+
+gap:18px;
+
+}
+
+.industry-item h3{
+
+font-size:34px;
+
+}
+
+.industry-arrow{
+
+font-size:24px;
+
+}
+
+}.contact-detail dd.contact-phone,
+.contact-detail dd.contact-phone a {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    color: var(--paper);
+
+    /* Better looking numbers */
+    font-variant-numeric: lining-nums;
+    font-feature-settings: "lnum" 1, "tnum" 1;
+    font-style: normal;
+
+    transition: color .2s ease;
+}
+
+.contact-detail dd.contact-phone a:hover {
+    color: var(--gold-hi);
+}.scroll-top{
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg,#c7923d,#f0d08b);
+    color:#090b10;
+    text-decoration:none;
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(20px) scale(1);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        opacity .3s ease;
+
+    z-index:99999;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+.scroll-top.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0) scale(1);
+}
+
+.scroll-top.show:hover{
+    transform:translateY(-6px) scale(1.08);
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.45),
+        0 0 25px rgba(210,171,103,.35);
+}
+  </style>
+</head>
+<body>
+  <header class="nav" id="top">
+    <div class="container nav-inner">
+      <a class="brand" href="https://webmandap.com/" aria-label="Web Mandap home">
+        <img class="brand-logo" src="logotrue.png" alt="Web Mandap logo" />
+        <span class="brand-name">Web <strong>Mandap</strong></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#studio">Studio</a>
+        <a href="#services">Capabilities</a>
+        <a href="#work">Selected work</a>
+        <a href="#process">Process</a>
+      </nav>
+      <a class="nav-cta" href="#contact"  rel="noopener">GET YOUR FREE DEMO <span class="arrow">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileMenu" aria-label="Mobile navigation">
+    <div>
+      <a href="#studio">Studio</a>
+      <a href="#services">Capabilities</a>
+      <a href="#work">Selected work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">GET YOUR FREE DEMO</a>
+      <p class="mini">Independent digital studio · India</p>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="head" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <!-- Replace assets/webmandap-hero.mp4 with your final looping hero video. The SVG poster shows until the video is added. -->
+        <video class="hero-video" autoplay muted loop playsinline poster="assets/webmandap-hero-placeholder.svg">
+          <source src="Video Project 22.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-orbit" aria-hidden="true"></div>
+      <div class="container hero-wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">Brand-led web experiences · India</p>
+          <h1 class="display" id="hero-title">Crafting digital experiences that <em>tell your story.</em></h1>
+          <p class="hero-description">Bespoke websites that communicate who you are before a single conversation begins. Designed, developed, launched, and refined with intention.</p>
+          <div class="hero-actions">
+            <a class="button gold" href="#contact">GET YOUR FREE DEMO <span class="arrow">↗</span></a>
+            <a class="button ghost" href="#work">View selected work <span class="arrow">↓</span></a>
+          </div>
+          <div class="hero-status" aria-label="Web Mandap highlights">
+            <span>Bespoke websites tailored to your brand</span>
+            <span>Strategy → Design → Launch</span>
+          </div>
+        </div>
+        
+      </div>
+      <div class="hero-scroll" aria-hidden="true">Scroll to explore</div>
+    </section>
+
+    <section class="section" id="studio" aria-labelledby="studio-title">
+      <div class="container studio-grid">
+        <div class="reveal">
+          <p class="eyebrow">The Studio</p>
+          <h2 class="display studio-title" id="studio-title">Your story deserves more than a place online.</h2>
+        </div>
+        <div class="studio-copy reveal delay-1">
+          <p class="lead">A website does its quiet work before a conversation begins. It should make the right people feel that they are in the right place. Web Mandap combines visual clarity, brand thinking, and precise development to make that first moment count.</p>
+          <div class="principles">
+            <div class="principle">
+              <span>Our point of view</span>
+              <p>Thoughtful design creates trust. Clear structure earns attention. Small details shape how a brand is remembered.</p>
+            </div>
+            <div class="principle">
+              <span>Our standard</span>
+              <p>No recycled layouts. No generic digital language. Every decision is made for the business in front of us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="manifesto" aria-label="Web Mandap principles">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Bespoke by default</span>
+      <i></i>
+      <span>Built with intention</span>
+      <i></i>
+      <span>Remarkable designs</span>
+      <i></i>
+      <span>Custom coded</span>
+      <i></i>
+
+      <span>Bespoke by default</span>
+      <i></i>
+      <span>Built with intention</span>
+      <i></i>
+      <span>Remarkable designs</span>
+      <i></i>
+      <span>Custom coded</span>
+      <i></i>
+    </div>
+  </div>
+</div>
+
+    <section class="section" aria-labelledby="difference-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Why Web Mandap</p>
+            <h2 class="display" id="difference-title">The difference is in what we <em>refuse to compromise.</em></h2>
+          </div>
+          <p class="lead">A strong digital presence is not decoration. It is clarity, confidence, and an experience that feels unmistakably yours.</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card reveal"><span class="value-no">01 / 04</span><div class="value-symbol">◌</div><h3>Built around you</h3><p>Your industry, your audience, your personality—translated into a digital experience that feels genuinely owned.</p></article>
+          <article class="value-card reveal delay-1"><span class="value-no">02 / 04</span><div class="value-symbol">↗</div><h3>Designed to earn trust</h3><p>Every word, layout, and interaction is shaped to make the next step feel natural, credible, and easy to take.</p></article>
+          <article class="value-card reveal delay-2"><span class="value-no">03 / 04</span><div class="value-symbol">⌘</div><h3>Hand-coded with care</h3><p>Clean development gives your site the polish, performance, and freedom a serious brand needs to stay useful.</p></article>
+          <article class="value-card reveal delay-3"><span class="value-no">04 / 04</span><div class="value-symbol">✦</div><h3>Thought through to launch</h3><p>Hosting, domains, indexing, and the finishing details are handled so nothing important gets left behind.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">Capabilities</p>
+            <h2 class="display" id="services-title">Everything your online presence needs to <em>feel complete.</em></h2>
+          </div>
+          <p class="lead">One focused studio, from the first visual direction to the details that make a new website visible and dependable in the real world.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal"><div class="service-top"><span class="service-no">01</span><span class="service-mark">W</span></div><div><h3>Bespoke Website Design</h3><p>A visual language and user journey made around your brand, ambitions, and the people you want to reach.</p></div></article>
+          <article class="service-card reveal delay-1"><div class="service-top"><span class="service-no">02</span><span class="service-mark">⌘</span></div><div><h3>Custom Development</h3><p>Thoughtfully hand-coded pages, interactions, and details that make the experience feel seamless on every screen.</p></div></article>
+          <article class="service-card reveal delay-2"><div class="service-top"><span class="service-no">03</span><span class="service-mark">↺</span></div><div><h3>Website Redesign</h3><p>A sharper digital expression for businesses that have outgrown what they currently show the world.</p></div></article>
+          <article class="service-card reveal"><div class="service-top"><span class="service-no">04</span><span class="service-mark">◉</span></div><div><h3>Hosting & Domains</h3><p>Deployment, domain setup, security basics, and dependable technical foundations—handled with the build.</p></div></article>
+          <article class="service-card reveal delay-1"><div class="service-top"><span class="service-no">05</span><span class="service-mark">⌁</span></div><div><h3>Search & Indexing</h3><p>Google-ready foundations, Search Console setup, metadata, and indexing support so your new site can be found.</p></div></article>
+          <article class="service-card reveal delay-2"><div class="service-top"><span class="service-no">06</span><span class="service-mark">+</span></div><div><h3>Care After Launch</h3><p>Ongoing refinements, content updates, monitoring, and support for a site that should keep moving with your business.</p></div></article>
+        </div>
+        <div class="services-footer"><span>Need something specific?</span><p>Every project starts with a straightforward conversation about the work that will make the biggest difference.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="work-title">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <div>
+                <p class="eyebrow">Selected Work</p>
+
+                <h2 class="display" id="work-title">
+                    Crafted for businesses that wanted to stand <em>apart.</em>
+                </h2>
+            </div>
+
+            <p class="lead">
+                From established companies to growing businesses, every project is designed around identity, trust and lasting first impressions.
+            </p>
+        </div>
+
+        <div class="industry-list">
+
+            <a href="https://www.theglobalfitness.com/" target="_blank" class="industry-item reveal">
+
+                <div class="industry-left">
+                    <span class="industry-number">01</span>
+
+                    <div>
+                        <h3>The Global Fitness</h3>
+                        <p>Health & Fitness</p>
+                    </div>
+                </div>
+
+                <span class="industry-arrow">↗</span>
+
+            </a>
+
+            <a href="https://rkscargo.com/" target="_blank"  class="industry-item reveal delay-1">
+
+                <div class="industry-left">
+                    <span class="industry-number">02</span>
+
+                    <div>
+                        <h3>R.K. Suri & Company</h3>
+                        <p>Logistics & Freight Forwarding</p>
+                    </div>
+                </div>
+
+                <span class="industry-arrow">↗</span>
+
+            </a>
+
+            <a href="https://blnd.online/" target="_blank" class="industry-item reveal delay-2">
+
+                <div class="industry-left">
+                    <span class="industry-number">03</span>
+
+                    <div>
+                        <h3>BLND</h3>
+                        <p>Beauty & Cosmetics</p>
+                    </div>
+                </div>
+
+                <span class="industry-arrow">↗</span>
+
+            </a>
+
+            <a href="#contact" class="industry-item reveal delay-3">
+
+                <div class="industry-left">
+                    <span class="industry-number">04</span>
+
+                    <div>
+                        <h3>Your Business</h3>
+                        <p>The next success story.</p>
+                    </div>
+                </div>
+
+                <span class="industry-arrow">+</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <section class="section process-showcase" id="process" aria-labelledby="process-title">
+  <div class="container">
+
+    <div class="process-intro">
+
+      <div class="process-intro-copy reveal">
+        <p class="eyebrow">The Process</p>
+
+        <h2 class="display" id="process-title">
+          One clear path from first conversation to a fully <em>live presence.</em>
+        </h2>
+
+        <p class="lead">
+          A website project should not leave you coordinating designers, developers, hosting providers, domain sellers, or Google setup on your own. We take ownership of the moving parts from the moment we understand your business to the moment your website is live, searchable, and ready to represent you properly.
+        </p>
+
+        <div class="process-legend">
+          <span>Strategy</span>
+          <span>Design</span>
+          <span>Development</span>
+          <span>Domain & Hosting</span>
+        </div>
+      </div>
+
+      <div class="process-film reveal delay-1">
+
+        <!-- Replace this entire .process-film-content block with your video later. -->
+        <div class="process-film-grid" aria-hidden="true"></div>
+
+        <div class="process-film-content">
+          <div class="process-film-top">
+            <span>Web Mandap</span>
+            <span class="process-film-live">Demo site free</span>
+          </div>
+
+          <div class="process-film-center">
+
+            <strong>From idea<br>to online.</strong>
+            <p>Below is walkthrough of how a Web Mandap project moves from conversation to launch.</p>
+          </div>
+
+          <div class="process-film-bottom">
+            <span>Strategy → Design → Build → Launch</span>
+            <strong>Live website in as little as 5 days!</strong>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="process-journey">
+
+      <article class="journey-step reveal">
+        <div class="journey-index">
+          01
+          <span>Business immersion</span>
+        </div>
+
+        <div class="journey-main">
+          <span class="step-label">Before we design anything</span>
+          <h3>We understand the business behind the website.</h3>
+          <p>
+            We begin by learning what your business actually does, what makes it worth choosing, who you want to reach, and where your current online presence may be holding you back. This is where we understand your services, customers, competitors, brand personality, and the real objective behind building the website.
+          </p>
+        </div>
+
+        <ul class="journey-includes">
+          <li>Your business model</li>
+          <li>Audience & decision makers</li>
+          <li>Brand perception</li>
+          <li>Website objectives</li>
+        </ul>
+      </article>
+
+      <article class="journey-step reveal delay-1">
+        <div class="journey-index">
+          02
+          <span>Feature workshop</span>
+        </div>
+
+        <div class="journey-main">
+          <span class="step-label">Planning it with the people who know it best</span>
+          <h3>We discuss every feature with the owner or handling team.</h3>
+          <p>
+            Once we understand the business, we sit down with the owner or key decision maker to map out what the website needs to do. Pages, service flows, enquiry systems, WhatsApp buttons, booking requirements, galleries, testimonials, integrations, brand references, and every practical detail are discussed before the build starts.
+          </p>
+        </div>
+
+        <ul class="journey-includes">
+          <li>Pages & navigation</li>
+          <li>Forms & lead flows</li>
+          <li>WhatsApp / calls / booking</li>
+          <li>Visual direction</li>
+        </ul>
+      </article>
+
+      <article class="journey-step reveal delay-2">
+        <div class="journey-index">
+          03
+          <span>First draft</span>
+        </div>
+
+        <div class="journey-main">
+          <span class="step-label">Turning the plan into something you can see</span>
+          <h3>We create the first version around your brand—not a template.</h3>
+          <p>
+            The first draft brings together the structure, copy direction, visual style, page flow, and key interactions into one working experience. You get to see how your business will be presented online before we move into the final version. This is where the abstract ideas become real enough to review, question, and improve.
+          </p>
+        </div>
+
+        <ul class="journey-includes">
+          <li>Custom page structure</li>
+          <li>Visual design direction</li>
+          <li>Responsive layout planning</li>
+          <li>Initial content placement</li>
+        </ul>
+      </article>
+
+      <article class="journey-step reveal delay-3">
+        <div class="journey-index">
+          04
+          <span>Refine & build</span>
+        </div>
+
+        <div class="journey-main">
+          <span class="step-label">Feedback becomes polish</span>
+          <h3>We refine the details, then build the final website properly.</h3>
+          <p>
+            Your feedback is used to sharpen the messaging, improve sections, adjust features, and make sure the website feels accurate to your business. Once the direction is approved, we complete the final custom build—optimised for desktop and mobile, with clean interactions, proper spacing, and the technical polish a serious brand should have.
+          </p>
+        </div>
+
+        <ul class="journey-includes">
+          <li>Feedback-led refinement</li>
+          <li>Custom coded build</li>
+          <li>Mobile optimisation</li>
+          <li>Final quality checks</li>
+        </ul>
+      </article>
+
+      <article class="journey-step reveal">
+        <div class="journey-index">
+          05
+          <span>Launch & visibility</span>
+        </div>
+
+        <div class="journey-main">
+          <span class="step-label">The part most people leave you to figure out</span>
+          <h3>We take care of domain, hosting, launch, and being found.</h3>
+          <p>
+            Once the website is ready, we handle the practical launch side too. That includes helping purchase or connect your domain, setting up hosting, configuring SSL security, deploying the website, connecting essential contact systems, and preparing the foundations for Google indexing. You are not handed a folder of files and told to figure it out—we make sure the full presence is actually ready to work.
+          </p>
+        </div>
+
+        <ul class="journey-includes">
+          <li>Domain purchase & connection</li>
+          <li>Hosting & SSL setup</li>
+          <li>Google Search Console</li>
+          <li>Sitemap & indexing basics</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <div class="process-closing reveal">
+      <strong>
+        One team. Every moving part handled with intention.
+      </strong>
+
+      <p>
+        From the first call to the moment someone finds your website online, Web Mandap stays responsible for the experience—not just the visuals.
+      </p>
+    </div>
+
+  </div>
+</section>
+    <section class="section testimonials" aria-labelledby="review-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">Client Notes</p><h2 class="display" id="review-title">The kind of response the work is <em>made for.</em></h2></div>
+          <p class="lead">
+  The real measure of our work is how it feels to the people it is built for — clearer, more credible, and unmistakably their own.
+</p>
+        </div>
+        <div class="testimonial-grid">
+          <article class="review-card review-placeholder reveal"><span class="quote">“</span><p>A huge thank you to Mr. Pratap for creating our The Global Fitness website for all four branches. Your talent, creativity, and dedication truly stand out. We’re grateful for your hard work and your ability to help us out with every detail in the best way possible. We wish you continued success. Keep up the amazing work! 🙌</p><footer>Mr. Hegde<small>The Global Fitness · CEO</small></footer></article>
+          <article class="review-card review-placeholder reveal delay-1"><span class="quote">“</span><p>We were a company which had nearly no online prescence besides being well established in the real world, Mr. Pratap from Web Mandap not only made an amazing product but handled all the complexities we weren't really comfortable with, from making to publishing and even indexing, a huge thank you from our side.🙌✨</p><footer>Dr. Suri<small>The R.K. Suri & Company · CEO</small></footer></article>
+          <article class="review-card review-placeholder reveal delay-2"><span class="quote">“</span><p>A heartfelt thank you to Mr. Pratap for bringing my vision to life. Creating my very first brand website for BLND was a huge milestone, and your patience, dedication, and hard work made the entire journey so smooth. Thank you for understanding every detail and turning an idea into something beautiful.✨✨🌸</p><footer>Ms. Sneha<small>BLND · CEO</small></footer></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <p class="eyebrow">Start a Conversation</p>
+          <h2 class="display" id="contact-title">Let’s give your business a presence it can <em>grow into.</em></h2>
+          <div class="contact-intro"><p class="lead">Tell us what you are building, improving, or preparing to launch. The form sends your brief directly to WhatsApp, so you can expect a real response—not a black hole.</p></div>
+          <dl class="contact-details">
+            <div class="contact-detail"><dt>WhatsApp / Phone</dt><dd class="contact-phone">
+  <a href="tel:+919810614836">+91 98106 14836</a>
+</dd></div>
+            <div class="contact-detail"><dt>Based in</dt><dd>India · Working with ambitious businesses everywhere</dd></div>
+            <div class="contact-detail"><dt>Email</dt><dd><span id="email-placeholder">Email coming soon</span></dd></div>
+          </dl>
+        </div>
+        <form class="contact-form reveal delay-1" id="contactForm" novalidate>
+          <div class="form-top"><h3>Project enquiry</h3><p>Tell us enough to understand the shape of the opportunity.</p></div>
+          <div class="form-grid">
+            <div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" placeholder="Your name" required /></div>
+            <div class="field"><label for="business">Business / brand</label><input id="business" name="business" autocomplete="organization" placeholder="Your business name" required /></div>
+            <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required /></div>
+            <div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="Your contact number" required /></div>
+            <div class="field full"><label for="interest">What are you looking for?</label><select id="interest" name="interest" required><option value="" selected disabled>Select a service</option><option>New custom website</option><option>Website redesign</option><option>Business / portfolio website</option><option>Hosting, domain, or launch setup</option><option>Search indexing and optimisation</option><option>Something more specific</option></select></div>
+            <div class="field full"><label for="message">Tell us about it</label><textarea id="message" name="message" placeholder="What does your business do, what are you trying to achieve, and what would a great website change for you?" required></textarea></div>
+          </div>
+          <div class="form-bottom"><p class="form-note">Submitting opens WhatsApp with your enquiry pre-filled. For a free first audit kindly fill in the details and click on the button to the right.
+          </p><button class="send-button" type="submit">Send enquiry</button></div>
+          <p class="form-success" id="formSuccess" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="container contact-footer-bar"><span>© <span id="year"></span> Web Mandap. All rights reserved.</span><span>Crafted with intention · India</span><a href="#head">Back to top ↑</a></div>
+    </section>
+  </main>
+<a href="#head" class="scroll-top" aria-label="Scroll to top">
+    ↑
+</a>
+<script>
+  const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzsfWc6dwwO-9-rUSfmWkHYlczrugAKytIWXJRaAzkvt0TZD8fdZbDBPfrJp0Ynb83WiQ/exec";
+
+  function saveToSheetSilently(data) {
+    fetch(GOOGLE_SHEET_URL, {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify(data)
+    }).catch(() => {});
+  }
+
+  const nav = document.querySelector('.nav');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.querySelector('.mobile-nav');
+  const mobileLinks = document.querySelectorAll('.mobile-nav a');
+
+  const setNavState = () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 16);
+  };
+
+  setNavState();
+  window.addEventListener('scroll', setNavState, { passive: true });
+
+  const closeMenu = () => {
+    menuToggle.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('open');
+    document.body.classList.remove('menu-open');
+  };
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+    mobileMenu.classList.toggle('open', !isOpen);
+    document.body.classList.toggle('menu-open', !isOpen);
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(element => {
+    revealObserver.observe(element);
+  });
+
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const data = new FormData(form);
+
+    const leadData = {
+      name: data.get('name') || "",
+      business: data.get('business') || "",
+      phone: data.get('phone') || "",
+      email: data.get('email') || "",
+      interest: data.get('interest') || "",
+      message: data.get('message') || ""
+    };
+
+    saveToSheetSilently(leadData);
+
+    const whatsappMessage = [
+      'Hi Web Mandap, I would like to discuss a project.',
+      '',
+      `Name: ${leadData.name}`,
+      `Business: ${leadData.business}`,
+      `Email: ${leadData.email}`,
+      `Phone: ${leadData.phone}`,
+      `Looking for: ${leadData.interest}`,
+      '',
+      'Project details:',
+      leadData.message
+    ].join('\n');
+
+    const whatsappURL = `https://wa.me/919810614836?text=${encodeURIComponent(whatsappMessage)}`;
+
+    success.textContent = 'Opening WhatsApp with your enquiry…';
+    window.open(whatsappURL, '_blank', 'noopener');
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<a href="#head" class="scroll-top" aria-label="Scroll to top">↑</a>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrollTopBtn = document.querySelector(".scroll-top");
+
+    if (!scrollTopBtn) return;
+
+    function toggleScrollTop() {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add("show");
+      } else {
+        scrollTopBtn.classList.remove("show");
+      }
+    }
+
+    window.addEventListener("scroll", toggleScrollTop);
+    toggleScrollTop();
+  });
+</script>
+</body>
+</html>
