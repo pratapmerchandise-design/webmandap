@@ -77,9 +77,76 @@
     .menu-toggle span { display: block; width: 18px; height: 1px; margin: 5px auto; background: currentColor; transition: transform .25s var(--ease), opacity .25s ease; }
     .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(6px) rotate(45deg); }
     .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-6px) rotate(-45deg); }
-    .mobile-nav { position: fixed; z-index: 60; inset: 0; display: grid; place-items: center; visibility: hidden; opacity: 0; background: rgba(7,9,14,.98); transition: visibility .28s ease, opacity .28s ease; }
-    .mobile-nav.open { visibility: visible; opacity: 1; }
-    .mobile-nav a { display: block; margin: 14px 0; text-align: center; color: var(--paper); font: 600 clamp(42px, 12vw, 70px)/.94 var(--serif); letter-spacing: -.065em; }
+    .mobile-nav{
+  position: fixed;
+  top: 74px;
+  left: 14px;
+  right: 14px;
+  z-index: 60;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+
+  padding: 14px;
+  border: 1px solid rgba(210,171,103,.28);
+  background: rgba(7,9,14,.96);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 22px 50px rgba(0,0,0,.45);
+
+  transition: .28s var(--ease);
+}
+
+.mobile-nav.open{
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-nav > div{
+  display: grid;
+  gap: 6px;
+}
+
+.mobile-nav a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 14px;
+  border-bottom: 1px solid rgba(242,244,246,.08);
+
+  color: var(--paper);
+  font: 500 11px/1 var(--mono);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.mobile-nav a::after{
+  content: "↗";
+  color: var(--gold-hi);
+  font-size: 12px;
+}
+
+.mobile-nav a:last-of-type{
+  margin-top: 6px;
+  border: 1px solid rgba(210,171,103,.45);
+  justify-content: center;
+  color: var(--gold-hi);
+}
+
+.mobile-nav a:last-of-type::after{
+  display: none;
+}
+
+.mobile-nav .mini{
+  margin: 10px 0 2px;
+  text-align: center;
+  color: rgba(242,244,246,.42);
+  font: 500 8px/1.5 var(--mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
     .mobile-nav .mini { margin-top: 25px; color: var(--gold-hi); font: 500 10px/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
 
     /* Hero */
@@ -1156,20 +1223,39 @@ font-size:24px;
         <a href="#process">Process</a>
       </nav>
       <a class="nav-cta" href="#contact"  rel="noopener">GET YOUR FREE DEMO <span class="arrow">↗</span></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span></button>
+      <button class="menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-controls="mobileMenu"
+        aria-expanded="false">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+</button>
     </div>
   </header>
 
   <nav class="mobile-nav" id="mobileMenu" aria-label="Mobile navigation">
     <div>
-      <a href="#studio">Studio</a>
-      <a href="#services">Capabilities</a>
-      <a href="#work">Selected work</a>
-      <a href="#process">Process</a>
-      <a href="#contact">GET YOUR FREE DEMO</a>
-      <p class="mini">Independent digital studio · India</p>
+
+        <a href="#studio">Studio</a>
+
+        <a href="#services">Capabilities</a>
+
+        <a href="#work">Selected Work</a>
+
+        <a href="#process">Process</a>
+
+        <a href="#contact">Get Your Free Demo</a>
+
+        <p class="mini">
+            Independent Digital Studio • India
+        </p>
+
     </div>
-  </nav>
+</nav>
 
   <main>
     <section class="hero" id="head" aria-labelledby="hero-title">
@@ -1435,8 +1521,8 @@ font-size:24px;
           <span class="step-label">Before we design anything</span>
           <h3>We understand the business behind the website.</h3>
           <p>
-            We begin by learning what your business actually does, what makes it worth choosing, who you want to reach, and where your current online presence may be holding you back. This is where we understand your services, customers, competitors, brand personality, and the real objective behind building the website.
-          </p>
+Before any design begins, we take time to understand your business, your audience, your goals, and what sets you apart. A great website starts with clarity—not assumptions.
+</p>
         </div>
 
         <ul class="journey-includes">
@@ -1457,8 +1543,8 @@ font-size:24px;
           <span class="step-label">Planning it with the people who know it best</span>
           <h3>We discuss every feature with the owner or handling team.</h3>
           <p>
-            Once we understand the business, we sit down with the owner or key decision maker to map out what the website needs to do. Pages, service flows, enquiry systems, WhatsApp buttons, booking requirements, galleries, testimonials, integrations, brand references, and every practical detail are discussed before the build starts.
-          </p>
+Together with you, we map out every important feature, page, enquiry flow, integration, and customer journey before development begins. Every decision is made with purpose.
+</p>
         </div>
 
         <ul class="journey-includes">
@@ -1479,8 +1565,8 @@ font-size:24px;
           <span class="step-label">Turning the plan into something you can see</span>
           <h3>We create the first version around your brand—not a template.</h3>
           <p>
-            The first draft brings together the structure, copy direction, visual style, page flow, and key interactions into one working experience. You get to see how your business will be presented online before we move into the final version. This is where the abstract ideas become real enough to review, question, and improve.
-          </p>
+We transform the strategy into a working first draft tailored to your brand. It gives you a clear picture of the design, structure, and overall experience before refinement.
+</p>
         </div>
 
         <ul class="journey-includes">
@@ -1501,8 +1587,8 @@ font-size:24px;
           <span class="step-label">Feedback becomes polish</span>
           <h3>We refine the details, then build the final website properly.</h3>
           <p>
-            Your feedback is used to sharpen the messaging, improve sections, adjust features, and make sure the website feels accurate to your business. Once the direction is approved, we complete the final custom build—optimised for desktop and mobile, with clean interactions, proper spacing, and the technical polish a serious brand should have.
-          </p>
+Your feedback shapes the final product. We refine the design, polish every interaction, and complete a fully custom website that performs beautifully across every device.
+</p>
         </div>
 
         <ul class="journey-includes">
@@ -1523,8 +1609,8 @@ font-size:24px;
           <span class="step-label">The part most people leave you to figure out</span>
           <h3>We take care of domain, hosting, launch, and being found.</h3>
           <p>
-            Once the website is ready, we handle the practical launch side too. That includes helping purchase or connect your domain, setting up hosting, configuring SSL security, deploying the website, connecting essential contact systems, and preparing the foundations for Google indexing. You are not handed a folder of files and told to figure it out—we make sure the full presence is actually ready to work.
-          </p>
+Once approved, we handle everything needed to take your website live—from domain and hosting to SSL, deployment, and Google indexing—so your business is ready from day one.
+</p>
         </div>
 
         <ul class="journey-includes">
@@ -1576,7 +1662,11 @@ font-size:24px;
   <a href="tel:+919810614836">+91 98106 14836</a>
 </dd></div>
             <div class="contact-detail"><dt>Based in</dt><dd>India · Working with ambitious businesses everywhere</dd></div>
-            <div class="contact-detail"><dt>Email</dt><dd><span id="email-placeholder">Email coming soon</span></dd></div>
+            <div class="contact-detail"><dt>Email</dt><dd>
+  <a href="mailto:support@webmandap.com" class="contact-email">
+    support@webmandap.com
+  </a>
+</dd></div>
           </dl>
         </div>
         <form class="contact-form reveal delay-1" id="contactForm" novalidate>
